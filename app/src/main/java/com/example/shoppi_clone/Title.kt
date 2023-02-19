@@ -1,6 +1,8 @@
 package com.example.shoppi_clone
 
+import com.google.gson.annotations.SerializedName
+
 data class Title(
     val text: String,
-    val icon_url: String
+    @SerializedName("icon_url") val iconUrl: String
 )
