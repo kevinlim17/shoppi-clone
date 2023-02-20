@@ -1,4 +1,4 @@
-package com.example.shoppi_clone.ui
+package com.example.shoppi_clone.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,12 +8,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.viewpager2.widget.ViewPager2
 import com.example.shoppi_clone.*
+import com.example.shoppi_clone.ui.common.ViewModelFactory
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.google.gson.Gson
 
 class HomeFragment : Fragment() {
 
