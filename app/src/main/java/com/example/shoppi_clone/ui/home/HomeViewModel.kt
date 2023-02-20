@@ -5,8 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.shoppi_clone.Banner
 import com.example.shoppi_clone.Title
+import com.example.shoppi_clone.repository.HomeRepository
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
 
     private val _title = MutableLiveData<Title>()
     val title: LiveData<Title> = _title
@@ -16,6 +17,12 @@ class HomeViewModel : ViewModel() {
 
     fun loadHomeData() {
         // TODO Data Layer - Repository에 요청
+        val homeData = homeRepository.getHomeData()
+        homeData?.let {
+            _title.value = it.title
+            _topBanners.value = it.topBanners
+        }
+
     }
 
 
