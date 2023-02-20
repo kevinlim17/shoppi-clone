@@ -1,10 +1,11 @@
-package com.example.shoppi_clone
+package com.example.shoppi_clone.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.shoppi_clone.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 private const val TAG = "MainActivity"

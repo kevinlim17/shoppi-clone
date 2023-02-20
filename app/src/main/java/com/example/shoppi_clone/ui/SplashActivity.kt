@@ -1,4 +1,4 @@
-package com.example.shoppi_clone
+package com.example.shoppi_clone.ui
 
 import android.content.Intent
 import android.os.Bundle
