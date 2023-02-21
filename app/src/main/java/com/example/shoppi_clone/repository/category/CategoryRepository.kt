@@ -1,8 +1,6 @@
-package com.example.shoppi_clone.repository
+package com.example.shoppi_clone.repository.category
 
 import com.example.shoppi_clone.model.Category
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 
 class CategoryRepository(
     private val remoteDataSource: CategoryRemoteDataSource

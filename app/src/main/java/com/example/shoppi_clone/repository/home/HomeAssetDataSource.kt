@@ -1,4 +1,4 @@
-package com.example.shoppi_clone.repository
+package com.example.shoppi_clone.repository.home
 
 import com.example.shoppi_clone.AssetLoader
 import com.example.shoppi_clone.model.HomeData

@@ -1,4 +1,4 @@
-package com.example.shoppi_clone.repository
+package com.example.shoppi_clone.repository.category
 
 import com.example.shoppi_clone.model.Category
 
