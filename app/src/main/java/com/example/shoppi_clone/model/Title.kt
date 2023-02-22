@@ -4,5 +4,6 @@ import com.google.gson.annotations.SerializedName
 
 data class Title(
     val text: String,
-    @SerializedName("icon_url") val iconUrl: String
+    //category_detail의 top_selling에서는 미사용
+    @SerializedName("icon_url") val iconUrl: String?
 )
