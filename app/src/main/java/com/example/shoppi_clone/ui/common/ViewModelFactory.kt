@@ -7,9 +7,12 @@ import com.example.shoppi_clone.AssetLoader
 import com.example.shoppi_clone.network.ApiClient
 import com.example.shoppi_clone.repository.category.CategoryRemoteDataSource
 import com.example.shoppi_clone.repository.category.CategoryRepository
+import com.example.shoppi_clone.repository.categorydetail.CategoryDetailRemoteDataSource
+import com.example.shoppi_clone.repository.categorydetail.CategoryDetailRepository
 import com.example.shoppi_clone.repository.home.HomeAssetDataSource
 import com.example.shoppi_clone.repository.home.HomeRepository
 import com.example.shoppi_clone.ui.category.CategoryViewModel
+import com.example.shoppi_clone.ui.categorydetail.CategoryDetailViewModel
 import com.example.shoppi_clone.ui.home.HomeViewModel
 
 class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
@@ -22,6 +25,10 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory
             modelClass.isAssignableFrom(CategoryViewModel::class.java) -> {
                 val repository = CategoryRepository(CategoryRemoteDataSource(ApiClient.create()))
                 CategoryViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(CategoryDetailViewModel::class.java) -> {
+                val repository = CategoryDetailRepository(CategoryDetailRemoteDataSource(ApiClient.create()))
+                CategoryDetailViewModel(repository) as T
             }
             else -> {
                 throw IllegalArgumentException("Failed to create ViewModel: ${modelClass.name}")
