@@ -47,17 +47,22 @@ class HomeFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
 
         setToolbar()
+        setNavigation()
         setTopBanners()
-
-        viewModel.openProductEvent.observe(viewLifecycleOwner, EventObserver {
-            openProductDetail(it.productDetail.productId)
-        })
     }
 
     private fun setToolbar() {
         viewModel.title.observe(viewLifecycleOwner) { title ->
             binding.title = title
         }
+    }
+
+    private fun setNavigation(){
+        viewModel.openProductEvent.observe(viewLifecycleOwner, EventObserver { banner ->
+            findNavController().navigate(R.id.action_home_to_product_detail, bundleOf(
+                KEY_PRODUCT_ID to banner.productDetail.productId
+            ))
+        })
     }
 
     private fun setTopBanners() {
@@ -81,11 +86,4 @@ class HomeFragment : Fragment() {
             }.attach()
         }
     }
-
-    private fun openProductDetail(productId: String){
-        findNavController().navigate(R.id.action_home_to_product_detail, bundleOf(
-            KEY_PRODUCT_ID to productId
-        ))
-    }
-
 }
