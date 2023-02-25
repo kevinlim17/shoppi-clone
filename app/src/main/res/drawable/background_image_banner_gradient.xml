@@ -2,8 +2,8 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <gradient
         android:startColor="@color/shoppi_black_01"
+        android:type="linear"
         android:angle="90"/>
     <corners
-        android:bottomLeftRadius="12dp"
-        android:bottomRightRadius="12dp"/>
+        android:radius="12dp"/>
 </shape>

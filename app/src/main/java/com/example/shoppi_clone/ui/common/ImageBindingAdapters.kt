@@ -26,6 +26,7 @@ fun loadCircleImage(view: ImageView, imageUrl: String?){
     }
 }
 
+/** Shape-able ImageView 미적용시
 @BindingAdapter("imageUrl", "radiusValue")
 fun loadImageWithRadius(view: ImageView, imageUrl: String?, radiusValue: Int){
     if (!imageUrl.isNullOrEmpty()){
@@ -35,3 +36,4 @@ fun loadImageWithRadius(view: ImageView, imageUrl: String?, radiusValue: Int){
             .into(view)
     }
 }
+ */

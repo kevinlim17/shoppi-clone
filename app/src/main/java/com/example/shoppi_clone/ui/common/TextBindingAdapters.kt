@@ -13,10 +13,12 @@ fun applyPriceFormat(view: TextView, price: Int){
     view.text = view.context.getString(R.string.unit_discount_currency, decimalFormat.format(price))
 }
 
-@BindingAdapter("strikePriceAmount")
-fun applyStrikePriceFormat(view: TextView, price: Int){
+@BindingAdapter("priceAmount", "strikeThrough")
+fun applyPriceAndStrikeStyle(view: TextView, price: Int, strikeThrough: Boolean){
     applyPriceFormat(view, price)
-    view.paintFlags = view.paintFlags.or(Paint.STRIKE_THRU_TEXT_FLAG)
+    if (strikeThrough) {
+        view.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+    }
 }
 
 @BindingAdapter("priceAmount", "discountRate")
