@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.shoppi_clone.model.Banner
 import com.example.shoppi_clone.databinding.ItemHomeBannerBinding
 
-class HomeBannerAdapter : ListAdapter<Banner, HomeBannerAdapter.HomeBannerViewHolder>(BannerDiffCallback()) {
+class HomeBannerAdapter(private val viewModel: HomeViewModel) :
+    ListAdapter<Banner, HomeBannerAdapter.HomeBannerViewHolder>(BannerDiffCallback()) {
 
     private lateinit var binding: ItemHomeBannerBinding
 
@@ -21,9 +22,11 @@ class HomeBannerAdapter : ListAdapter<Banner, HomeBannerAdapter.HomeBannerViewHo
         holder.bind(getItem(position))
     }
 
-    class HomeBannerViewHolder(private val binding: ItemHomeBannerBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class HomeBannerViewHolder(private val binding: ItemHomeBannerBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(banner: Banner) {
+            binding.viewModel = viewModel
             binding.banner = banner
             binding.executePendingBindings()
         }
