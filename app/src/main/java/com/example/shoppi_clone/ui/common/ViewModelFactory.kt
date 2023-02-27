@@ -19,8 +19,7 @@ import com.example.shoppi_clone.ui.home.HomeViewModel
 import com.example.shoppi_clone.ui.productdetail.ProductDetailViewModel
 
 class ViewModelFactory(
-    private val context: Context,
-    private val initValue: String?
+    private val context: Context
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
@@ -36,9 +35,9 @@ class ViewModelFactory(
                 val repository = CategoryDetailRepository(CategoryDetailRemoteDataSource(ApiClient.create()))
                 CategoryDetailViewModel(repository) as T
             }
-            modelClass.isAssignableFrom(ProductDetailViewModel::class.java) && !initValue.isNullOrEmpty() -> {
+            modelClass.isAssignableFrom(ProductDetailViewModel::class.java) -> {
                 val repository = ProductDetailRepository(ProductDetailRemoteDataSource(ApiClient.create()))
-                ProductDetailViewModel(repository, initValue) as T
+                ProductDetailViewModel(repository) as T
             }
             else -> {
                 throw IllegalArgumentException("Failed to create ViewModel: ${modelClass.name}")

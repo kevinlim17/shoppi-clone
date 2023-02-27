@@ -9,18 +9,13 @@ import com.example.shoppi_clone.repository.productdetail.ProductDetailRepository
 import kotlinx.coroutines.launch
 
 class ProductDetailViewModel(
-    private val repository: ProductDetailRepository,
-    private val productId: String
+    private val repository: ProductDetailRepository
 ): ViewModel(){
 
     private val _productDetail = MutableLiveData<Product>()
     val productDetail: LiveData<Product> = _productDetail
 
-    init {
-        loadProductDetail()
-    }
-
-    private fun loadProductDetail(){
+    fun loadProductDetail(productId: String){
         viewModelScope.launch {
             val productDetailValue = repository.getProductDetail(productId)
             _productDetail.value = productDetailValue

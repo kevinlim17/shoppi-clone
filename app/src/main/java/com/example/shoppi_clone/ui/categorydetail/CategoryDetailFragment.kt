@@ -14,7 +14,7 @@ import com.example.shoppi_clone.ui.common.ViewModelFactory
 class CategoryDetailFragment: Fragment() {
 
     private lateinit var binding: FragmentCategoryDetailBinding
-    private val viewModel: CategoryDetailViewModel by viewModels { ViewModelFactory(requireContext(), null) }
+    private val viewModel: CategoryDetailViewModel by viewModels { ViewModelFactory(requireContext()) }
 
     override fun onCreateView(
         inflater: LayoutInflater,

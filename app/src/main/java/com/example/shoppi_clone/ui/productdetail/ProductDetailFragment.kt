@@ -16,10 +16,7 @@ import com.example.shoppi_clone.ui.common.ViewModelFactory
 class ProductDetailFragment : Fragment() {
 
     private val viewModel: ProductDetailViewModel by viewModels {
-        ViewModelFactory(
-            requireContext(),
-            requireArguments().getString(KEY_PRODUCT_ID)
-        )
+        ViewModelFactory(requireContext())
     }
     private lateinit var binding: FragmentProductDetailBinding
 
@@ -37,24 +34,28 @@ class ProductDetailFragment : Fragment() {
 
         binding.lifecycleOwner = viewLifecycleOwner
 
-        val productDescriptionImageAdapter = ProductDescriptionImageAdapter()
-        binding.rvProductDetailImages.adapter = productDescriptionImageAdapter
+        setNavigation()
+        requireArguments().getString(KEY_PRODUCT_ID)?.let { productId ->
+            setProductDetail(productId)
+        }
+    }
 
-        setProductDetail(productDescriptionImageAdapter)
-
-        binding.toolbarProductDetail.setNavigationOnClickListener{
+    private fun setNavigation() {
+        binding.toolbarProductDetail.setNavigationOnClickListener {
             findNavController().navigateUp()
         }
     }
 
-    private fun setProductDetail(adapter: ProductDescriptionImageAdapter) {
+    private fun setProductDetail(productId: String) {
+        viewModel.loadProductDetail(productId)
+
+        val productDescriptionImageAdapter = ProductDescriptionImageAdapter()
+        binding.rvProductDetailImages.adapter = productDescriptionImageAdapter
+
         viewModel.productDetail.observe(viewLifecycleOwner) { product ->
             binding.productDetail = product
-            adapter.submitList(product.descriptions)
+            productDescriptionImageAdapter.submitList(product.descriptions)
         }
     }
-
-
-
 
 }

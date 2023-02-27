@@ -17,7 +17,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 class HomeFragment : Fragment() {
 
-    private val viewModel: HomeViewModel by viewModels { ViewModelFactory(requireContext(), null) }
+    private val viewModel: HomeViewModel by viewModels { ViewModelFactory(requireContext()) }
     private lateinit var binding: FragmentHomeBinding
 
     override fun onCreateView(
