@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.shoppi_clone.AssetLoader
+import com.example.shoppi_clone.ServiceLocator
 import com.example.shoppi_clone.network.ApiClient
 import com.example.shoppi_clone.repository.category.CategoryRemoteDataSource
 import com.example.shoppi_clone.repository.category.CategoryRepository
@@ -28,15 +29,15 @@ class ViewModelFactory(
                 HomeViewModel(repository) as T
             }
             modelClass.isAssignableFrom(CategoryViewModel::class.java) -> {
-                val repository = CategoryRepository(CategoryRemoteDataSource(ApiClient.create()))
+                val repository = CategoryRepository(CategoryRemoteDataSource(ServiceLocator.provideApiClient()))
                 CategoryViewModel(repository) as T
             }
             modelClass.isAssignableFrom(CategoryDetailViewModel::class.java) -> {
-                val repository = CategoryDetailRepository(CategoryDetailRemoteDataSource(ApiClient.create()))
+                val repository = CategoryDetailRepository(CategoryDetailRemoteDataSource(ServiceLocator.provideApiClient()))
                 CategoryDetailViewModel(repository) as T
             }
             modelClass.isAssignableFrom(ProductDetailViewModel::class.java) -> {
-                val repository = ProductDetailRepository(ProductDetailRemoteDataSource(ApiClient.create()))
+                val repository = ProductDetailRepository(ProductDetailRemoteDataSource(ServiceLocator.provideApiClient()))
                 ProductDetailViewModel(repository) as T
             }
             else -> {
