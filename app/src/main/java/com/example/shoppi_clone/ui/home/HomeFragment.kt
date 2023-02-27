@@ -8,14 +8,14 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ConcatAdapter
 import com.example.shoppi_clone.*
 import com.example.shoppi_clone.common.KEY_PRODUCT_ID
 import com.example.shoppi_clone.databinding.FragmentHomeBinding
-import com.example.shoppi_clone.ui.common.EventObserver
-import com.example.shoppi_clone.ui.common.ViewModelFactory
+import com.example.shoppi_clone.ui.common.*
 import com.google.android.material.tabs.TabLayoutMediator
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), ProductClickListener {
 
     private val viewModel: HomeViewModel by viewModels { ViewModelFactory(requireContext()) }
     private lateinit var binding: FragmentHomeBinding
@@ -49,6 +49,13 @@ class HomeFragment : Fragment() {
         setToolbar()
         setNavigation()
         setTopBanners()
+        setListAdapter()
+    }
+
+    override fun onProductClick(productId: String) {
+        findNavController().navigate(R.id.action_home_to_product_detail, bundleOf(
+            KEY_PRODUCT_ID to "desk-1"
+        ))
     }
 
     private fun setToolbar() {
@@ -84,6 +91,17 @@ class HomeFragment : Fragment() {
             TabLayoutMediator(binding.viewpagerHomeBannerIndicator, this) { tab, position ->
 
             }.attach()
+        }
+    }
+
+    private fun setListAdapter() {
+        val titleAdapter = SectionTitleAdapter()
+        val productPromotionAdapter = ProductPromotionAdapter(this)
+
+        binding.rvHomePromotion.adapter = ConcatAdapter(titleAdapter, productPromotionAdapter)
+        viewModel.promotions.observe(viewLifecycleOwner){
+            titleAdapter.submitList(listOf(it.title))
+            productPromotionAdapter.submitList(it.items)
         }
     }
 }
