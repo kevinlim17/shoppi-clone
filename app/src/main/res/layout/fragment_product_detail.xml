@@ -17,7 +17,8 @@
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/shoppi_white">
+            android:background="@color/shoppi_white"
+            app:elevation="0dp">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar_product_detail"
@@ -94,7 +95,7 @@
 
                 <TextView
                     android:id="@+id/tv_product_discount_price"
-                    style="@style/TextMedium"
+                    style="@style/TextMedium.Bold"
                     discountRate="@{productDetail.discountRate}"
                     priceAmount="@{productDetail.price}"
                     android:layout_width="wrap_content"
@@ -144,6 +145,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:layout_marginBottom="24dp"
+                    android:nestedScrollingEnabled="false"
                     android:orientation="vertical"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -158,58 +160,49 @@
 
         </androidx.core.widget.NestedScrollView>
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/appbar_add_to_cart"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:background="@drawable/background_appbar_add_to_cart"
-            android:backgroundTint="@color/shoppi_white_alpha"
-            app:contentInsetStart="0dp">
+            android:background="@drawable/background_appbar_add_to_cart">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/tv_product_discount_price_label"
+                style="@style/TextCaption2.Grey04"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/coupon_price_description"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/tv_coupon_price_description"
-                    style="@style/TextCaption2.Grey04"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/coupon_price_description"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/tv_coupon_price"
+                style="@style/TextSubtitle1.Bold"
+                discountRate="@{productDetail.discountRate}"
+                priceAmount="@{productDetail.price}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/tv_product_discount_price_label"
+                app:layout_constraintTop_toBottomOf="@id/tv_product_discount_price_label"
+                tools:text="92,820원" />
 
-                <TextView
-                    android:id="@+id/tv_coupon_price"
-                    style="@style/TextSubtitle1.Bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    priceAmount="@{productDetail.price}"
-                    discountRate="@{productDetail.discountRate}"
-                    app:layout_constraintStart_toStartOf="@id/tv_coupon_price_description"
-                    app:layout_constraintTop_toBottomOf="@id/tv_coupon_price_description"
-                    tools:text="92,820원" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_add_to_cart"
+                style="@style/TextSubtitle1.White.Bold"
+                android:layout_width="186dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/background_button_add_to_cart"
+                android:text="@string/add_to_cart"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_add_to_cart"
-                    style="@style/TextSubtitle1.White.Bold"
-                    android:layout_width="186dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="12dp"
-                    android:background="@drawable/background_button_add_to_cart"
-                    android:text="@string/add_to_cart"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.appcompat.widget.Toolbar>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
