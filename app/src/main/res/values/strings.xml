@@ -2,20 +2,16 @@
     <string name="app_name">Shoppi_Clone</string>
     <string name="title_product_detail_image">상품설명</string>
     <string name="coupon_price_description">쿠폰 적용가</string>
-    <string name="add_to_cart">장바구니 담기</string>
-    <string name="title_cart">장바구니</string>
-    <string name="button_order">선택한 상품 주문하기</string>
-    <string name="minus_product">상품 차감</string>
-    <string name="plus_product">상품 추가</string>
-    <string name="delete_product">상품 삭제</string>
+    <string name="label_category_new">NEW</string>
 
+    <!-- Unit -->
     <string name="unit_discount_rate">%d%%</string>
     <string name="unit_discount_currency">%s원</string>
 
     <!-- Navigation -->
     <string name="label_category">카테고리</string>
     <string name="label_home_icon">홈</string>
-    <string name="label_cart_icon">카트</string>
+    <string name="label_cart">장바구니</string>
 
     <!-- Image Description -->
     <string name="description_home_title_image">홈 화면 타이틀 이미지</string>
@@ -23,5 +19,13 @@
     <string name="description_product_detail_image">상품 상세 이미지</string>
     <string name="description_home_banner_image">홈화면 배너 이미지</string>
     <string name="description_home_banner_thumbnail">홈화면 배너 썸네일</string>
-    <string name="label_category_new">NEW</string>
+    <string name="description_cart_item_thumbnail">카트에 추가한 상품 이미지</string>
+
+    <!-- Button Description -->
+    <string name="minus_product">상품 차감</string>
+    <string name="plus_product">상품 추가</string>
+    <string name="delete_product">상품 삭제</string>
+    <string name="add_to_cart">장바구니 담기</string>
+    <string name="button_order">선택한 상품 주문하기</string>
+
 </resources>
