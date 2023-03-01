@@ -14,6 +14,7 @@ import com.example.shoppi_clone.repository.home.HomeAssetDataSource
 import com.example.shoppi_clone.repository.home.HomeRepository
 import com.example.shoppi_clone.repository.productdetail.ProductDetailRemoteDataSource
 import com.example.shoppi_clone.repository.productdetail.ProductDetailRepository
+import com.example.shoppi_clone.ui.cart.CartViewModel
 import com.example.shoppi_clone.ui.category.CategoryViewModel
 import com.example.shoppi_clone.ui.categorydetail.CategoryDetailViewModel
 import com.example.shoppi_clone.ui.home.HomeViewModel
@@ -39,6 +40,9 @@ class ViewModelFactory(
             modelClass.isAssignableFrom(ProductDetailViewModel::class.java) -> {
                 val repository = ProductDetailRepository(ProductDetailRemoteDataSource(ServiceLocator.provideApiClient()))
                 ProductDetailViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(CartViewModel::class.java) -> {
+                CartViewModel() as T
             }
             else -> {
                 throw IllegalArgumentException("Failed to create ViewModel: ${modelClass.name}")
