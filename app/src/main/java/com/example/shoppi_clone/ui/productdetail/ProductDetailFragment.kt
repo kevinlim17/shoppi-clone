@@ -1,5 +1,6 @@
 package com.example.shoppi_clone.ui.productdetail
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,7 +12,10 @@ import androidx.navigation.fragment.findNavController
 import com.example.shoppi_clone.R
 import com.example.shoppi_clone.common.KEY_PRODUCT_ID
 import com.example.shoppi_clone.databinding.FragmentProductDetailBinding
+import com.example.shoppi_clone.ui.common.Event
+import com.example.shoppi_clone.ui.common.EventObserver
 import com.example.shoppi_clone.ui.common.ViewModelFactory
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class ProductDetailFragment : Fragment() {
 
@@ -33,11 +37,13 @@ class ProductDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.viewModel = viewModel
 
         setNavigation()
         requireArguments().getString(KEY_PRODUCT_ID)?.let { productId ->
             setProductDetail(productId)
         }
+        setAddCart()
     }
 
     private fun setNavigation() {
@@ -56,6 +62,17 @@ class ProductDetailFragment : Fragment() {
             binding.productDetail = product
             productDescriptionImageAdapter.submitList(product.descriptions)
         }
+    }
+
+    private fun setAddCart(){
+        viewModel.addCartEvent.observe(viewLifecycleOwner, EventObserver {
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle("장바구니에 상품이 담겼습니다")
+                .setPositiveButton("확인") { dialog, which ->
+
+                }
+                .show()
+        })
     }
 
 }

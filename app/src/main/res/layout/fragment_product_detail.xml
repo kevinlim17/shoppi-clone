@@ -6,6 +6,10 @@
     <data>
 
         <variable
+            name="viewModel"
+            type="com.example.shoppi_clone.ui.productdetail.ProductDetailViewModel" />
+
+        <variable
             name="productDetail"
             type="com.example.shoppi_clone.model.Product" />
     </data>
@@ -198,6 +202,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="12dp"
                 android:background="@drawable/background_gradient_r24"
+                android:onClick="@{() -> viewModel.addCart(productDetail)}"
                 android:text="@string/add_to_cart"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

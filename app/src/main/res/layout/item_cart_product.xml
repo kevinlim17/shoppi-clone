@@ -13,7 +13,9 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         app:cardCornerRadius="12dp"
         app:cardElevation="2dp">
 
@@ -94,7 +96,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="@{cartProduct.amount}"
+                android:text="@{String.valueOf(cartProduct.amount)}"
                 app:layout_constraintEnd_toStartOf="@id/btn_cart_product_plus"
                 app:layout_constraintStart_toEndOf="@id/btn_cart_product_minus"
                 app:layout_constraintTop_toTopOf="@+id/btn_cart_product_minus"
